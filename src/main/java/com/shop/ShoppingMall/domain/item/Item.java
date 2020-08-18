@@ -1,5 +1,6 @@
 package com.shop.ShoppingMall.domain.item;
 
+import com.shop.ShoppingMall.domain.Category;
 import com.shop.ShoppingMall.domain.OrderItem;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,5 +24,8 @@ public abstract class Item {
     private int price;
 
     private int stockquantity;
+
+    @ManyToMany(mappedBy = "items")
+    List<Category> categories = new ArrayList<>();
 
 }
