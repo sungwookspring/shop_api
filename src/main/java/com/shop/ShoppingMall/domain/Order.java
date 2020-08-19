@@ -32,4 +32,34 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    /*
+        연관관계 메서드
+        (양방향관계 설정)
+
+        메소드 설정 전
+        member1 = new Member()
+        order = new Order()
+
+        member1.getOrder().add(order)
+        order.setMember(member1)
+     */
+
+    // member - order 연관관계
+    public void setMember(Member member){
+        this.member = member;
+        //양방향 설정
+        member.getOrders().add(this);
+    }
+
+    //order - orderitem
+    public void addOrderItem(OrderItem orderitem){
+        orderitems.add(orderitem);
+        orderitem.setOrder(this);
+    }
+
+    public void setDelivery(Delivery delivery){
+        this.delivery = delivery;
+        delivery.setOrder(this);
+    }
 }
