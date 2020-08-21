@@ -6,34 +6,33 @@
 </head>
 <body>
 
-<div class="login-form">
+    <div class="login-form">
 
-    <div class="login-form_logo">
-        <i class="fab fa-amazon"></i>
+        <h1 class="login-form_logo">
+            <i class="fab fa-amazon"></i>
+        </h1>
+
+        <form action="/members/register" method="POST" th:object="${memberForm}">
+            <div class="int-area">
+                <input type="text" th:field="*{name}">
+                <label>아이디</label>
+            </div>
+            <div class="int-area">
+                <input type="text" th:field="*{city}">
+                <label>도시</label>
+            </div>
+            <div class="int-area">
+                <input type="text" th:field="*{street}">
+                <label>주소</label>
+            </div>
+            <div class="int-area">
+                <input type="text" th:field="*{zipcode}">
+                <label>우편번호</label>
+            </div>
+
+            <button type="submit">회원가입</button>
+        </form>
     </div>
-
-    <form action="/members/register" method="POST" th:object="${memberForm}">
-        <div class="int-area">
-            <input type="text" th:field="*{name}">
-            <label>아이디</label>
-        </div>
-        <div class="int-area">
-            <input type="text" th:field="*{city}">
-            <label>도시</label>
-        </div>
-        <div class="int-area">
-            <input type="text" th:field="*{street}">
-            <label>주소</label>
-        </div>
-        <div class="int-area">
-            <input type="text" th:field="*{zipcode}">
-            <label>우편번호</label>
-        </div>
-
-        <button type="submit">회원가입</button>
-    </form>
-
-</div>
 
 </body>
 </html>
