@@ -1,14 +1,17 @@
 package com.shop.ShoppingMall.Controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class Hello {
+@Slf4j
+public class HomeController {
 
-    @GetMapping("index")
-    public String Hello(Model model){
+    @GetMapping("/")
+    public String home(Model model){
+        log.info("[*] home controller");
         return "index.html";
     }
 }
