@@ -12,25 +12,25 @@
             <i class="fab fa-amazon"></i>
         </h1>
 
-        <form action="/members/register" method="POST" th:object="${memberForm}">
+        <form class="register-form" action="/members/register" method="POST" th:object="${memberForm}">
             <div class="int-area">
-                <input type="text" th:field="*{name}">
-                <label>아이디</label>
+                <h3 class="register-input-label">아이디</h3>
+                <input class="register-input" type="text" th:field="*{name}">
             </div>
             <div class="int-area">
-                <input type="text" th:field="*{city}">
-                <label>도시</label>
+                <h3 class="register-input-label">도시</h3>
+                <input class="register-input" type="text" th:field="*{city}">
             </div>
             <div class="int-area">
-                <input type="text" th:field="*{street}">
-                <label>주소</label>
+                <h3 class="register-input-label">주소</h3>
+                <input class="register-input" type="text" th:field="*{street}">
             </div>
             <div class="int-area">
-                <input type="text" th:field="*{zipcode}">
-                <label>우편번호</label>
+                <h3 class="register-input-label">우편번호</h3>
+                <input class="register-input" type="text" th:field="*{zipcode}">
             </div>
 
-            <button type="submit">회원가입</button>
+            <button class="regiser-submitBtn" type="submit">회원가입</button>
         </form>
     </div>
 
