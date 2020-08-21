@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/import :: importer">
+    <title>main page</title>
+
+</head>
+<body>
+
+    <div class="login-form">
+
+        <h1 class="login-form_logo">
+            <i class="fab fa-amazon"></i>
+        </h1>
+
+        <form class="register-form" action="/members/register" method="POST" th:object="${memberForm}">
+            <div class="int-area">
+                <h3 class="register-input-label">아이디</h3>
+                <input class="register-input" type="text" th:field="*{name}">
+            </div>
+            <div class="int-area">
+                <h3 class="register-input-label">도시</h3>
+                <input class="register-input" type="text" th:field="*{city}">
+            </div>
+            <div class="int-area">
+                <h3 class="register-input-label">주소</h3>
+                <input class="register-input" type="text" th:field="*{street}">
+            </div>
+            <div class="int-area">
+                <h3 class="register-input-label">우편번호</h3>
+                <input class="register-input" type="text" th:field="*{zipcode}">
+            </div>
+            <div class="register-btn-area">
+                <button class="register-submitBtn" type="submit">회원가입</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
