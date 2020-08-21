@@ -20,7 +20,7 @@ public class MemberController {
         return "members/register";
     }
 
-    @PostMapping("")
+    @PostMapping("/members/register")
     public String CreateMember(@Valid MemberForm memberform){
         //to-do 회원가입
 
