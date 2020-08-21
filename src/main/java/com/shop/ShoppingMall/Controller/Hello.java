@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class Hello {
 
-    @GetMapping("hello")
+    @GetMapping("index")
     public String Hello(Model model){
-        return "hello";
+        return "index.html";
     }
 }
