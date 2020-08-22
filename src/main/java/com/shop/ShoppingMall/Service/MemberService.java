@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 public class MemberService {
 
     @Autowired
@@ -20,6 +20,7 @@ public class MemberService {
      * @param member 회원가입할 멤버객체(html에서 입력한 값)
      * @return 가입완료된 멤버ID
      */
+    @Transactional
     public Long CreateMember(Member member){
         //중복회원 가입 검사
         ValidateDuplicateMember(member);
