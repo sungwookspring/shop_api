@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
@@ -20,6 +22,8 @@ public class MemberServiceTest {
     MemberService memberService;
     @Autowired
     MemberRepository memberRepository;
+    @Autowired
+    EntityManager em;
 
     @Test
     public void 회원가입(){
@@ -30,6 +34,7 @@ public class MemberServiceTest {
         //when
         Long saveID = memberService.CreateMember(member1);
 
+        em.flush();
         //then
 //        Assertions.assertThat(member1.getId()).isEqualTo(saveID);
         assertEquals(member1, memberRepository.findMemberById(saveID));
