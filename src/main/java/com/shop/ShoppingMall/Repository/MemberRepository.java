@@ -1,4 +1,4 @@
-package com.shop.shop.Repository;
+package com.shop.ShoppingMall.Repository;
 
 import com.shop.ShoppingMall.domain.Member;
 import org.springframework.stereotype.Repository;
