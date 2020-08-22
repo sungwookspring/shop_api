@@ -1,6 +1,8 @@
 package com.shop.ShoppingMall.Service;
 
 import com.shop.ShoppingMall.Repository.MemberRepository;
+import com.shop.ShoppingMall.domain.Member;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +23,16 @@ public class MemberServiceTest {
 
     @Test
     public void 회원가입(){
+        //given
+        Member member1 = new Member();
+        member1.setName("test1");
 
+        //when
+        Long saveID = memberService.CreateMember(member1);
+
+        //then
+//        Assertions.assertThat(member1.getId()).isEqualTo(saveID);
+        assertEquals(member1, memberRepository.findMemberById(saveID));
     }
 
     @Test
