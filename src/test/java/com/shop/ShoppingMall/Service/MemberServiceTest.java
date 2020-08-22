@@ -40,7 +40,7 @@ public class MemberServiceTest {
         assertEquals(member1, memberRepository.findMemberById(saveID));
     }
 
-    @Test
+    @Test(expected = IllegalStateException.class)
     public void 중복회원_예외(){
         //given
         Member member1 = new Member();
@@ -51,12 +51,7 @@ public class MemberServiceTest {
 
         //when
         memberService.CreateMember(member1);
-        try{
-            memberService.CreateMember(member2);
-        }catch(IllegalStateException e){
-            System.out.println("중복회원가입 테스트 성공");
-            return;
-        }
+        memberService.CreateMember(member2);
 
         //then
         fail("중복 회원가입 테스트 실패");
