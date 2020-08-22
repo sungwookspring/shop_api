@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -26,16 +27,24 @@ public class MemberController {
 
     @GetMapping("/members/register")
     public String CreateMemberForm(Model model){
+        log.info("[*] 회원가입 페이지 로드");
+
         model.addAttribute("memberForm", new MemberForm());
         return "members/register";
     }
 
     @PostMapping("/members/register")
-    public String CreateMember(@Valid MemberForm memberform){
+    public String CreateMember(@Valid MemberForm memberform, BindingResult result){
+        log.info("회원가입 시작");
+
+        if(result.hasErrors()){
+            log.info("사용자 입력값이 잘못됨");
+            return "members/register";
+        }
+
         Address address = new Address(memberform.getCity(), memberform.getStreet(), memberform.getZipcode());
         Member member = new Member();
         
-        log.info("회원가입 시작");
         member.setName(memberform.getName());
         member.setAddrss(address);
         // 회원가입

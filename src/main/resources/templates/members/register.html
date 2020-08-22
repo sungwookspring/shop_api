@@ -15,7 +15,9 @@
         <form class="register-form" action="/members/register" method="POST" th:object="${memberForm}">
             <div class="int-area">
                 <h3 class="register-input-label">아이디</h3>
-                <input class="register-input" type="text" th:field="*{name}">
+                <input class="register-input" type="text" th:field="*{name}"
+                       th:class="${#fields.hasErrors('name')}? 'register-input fieldError' : 'register-input'">
+                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Incorrect data</p>
             </div>
             <div class="int-area">
                 <h3 class="register-input-label">도시</h3>
