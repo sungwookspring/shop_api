@@ -12,8 +12,12 @@ import java.util.List;
 @Transactional(readOnly = true)
 public class MemberService {
 
+    private final MemberRepository memberRepository;
+
     @Autowired
-    MemberRepository memberRepository;
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     /***
      * 회원가입
