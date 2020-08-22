@@ -42,6 +42,23 @@ public class MemberServiceTest {
 
     @Test
     public void 중복회원_예외(){
+        //given
+        Member member1 = new Member();
+        member1.setName("test1");
 
+        Member member2 = new Member();
+        member2.setName("test1");
+
+        //when
+        memberService.CreateMember(member1);
+        try{
+            memberService.CreateMember(member2);
+        }catch(IllegalStateException e){
+            System.out.println("중복회원가입 테스트 성공");
+            return;
+        }
+
+        //then
+        fail("중복 회원가입 테스트 실패");
     }
 }
