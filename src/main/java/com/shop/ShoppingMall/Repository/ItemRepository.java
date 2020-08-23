@@ -1,33 +1,25 @@
 package com.shop.ShoppingMall.Repository;
 import com.shop.ShoppingMall.domain.item.Item;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class ItemRepository {
     private final EntityManager em;
-
-    /***
-     * 생성자 주입
-     * @param em
-     */
-    @Autowired
-    public ItemRepository(EntityManager em) {
-        this.em = em;
-    }
 
     /***
      * item 저장
      * @param item item 객체
      */
     public void save(Item item){
-
-        try{
-            Long item_id = item.getId();
-        }catch(NullPointerException e){
-            //처음 아이템 등록
+        Long id = item.getId();
+        if(id == null){
+            //아이템 처음 등록
+            em.persist(item);
+        }else{
             em.merge(item);
         }
     }
