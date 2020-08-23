@@ -1,18 +1,20 @@
 package com.shop.ShoppingMall.Repository;
 import com.shop.ShoppingMall.domain.item.Item;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
-public class itemRepository {
+public class ItemRepository {
     private final EntityManager em;
 
     /***
      * 생성자 주입
      * @param em
      */
-    public itemRepository(EntityManager em) {
+    @Autowired
+    public ItemRepository(EntityManager em) {
         this.em = em;
     }
 
