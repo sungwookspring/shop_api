@@ -29,6 +29,13 @@ public class OrderItem {
     /***
      * 생성 메소드
      */
+
+    /***
+     * setter로 주문하는 것을 금지
+     */
+    protected OrderItem() {
+    }
+
     public static OrderItem createOrderItem(Item item, int orderPrice, int count){
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
