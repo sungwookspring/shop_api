@@ -1,10 +1,6 @@
 package com.shop.ShoppingMall.Repository;
-
 import com.shop.ShoppingMall.domain.item.Item;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Repository;
-
 import javax.persistence.EntityManager;
 import java.util.List;
 
@@ -28,9 +24,9 @@ public class itemRepository {
 
         try{
             Long item_id = item.getId();
-            em.merge(item);
-        }catch(NullPointerException){
+        }catch(NullPointerException e){
             //처음 아이템 등록
+            em.merge(item);
         }
     }
 
