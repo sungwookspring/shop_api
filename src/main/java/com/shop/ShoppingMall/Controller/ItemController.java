@@ -37,7 +37,7 @@ public class ItemController {
         book.setName(bookForm.getName());
         book.setPrice(bookForm.getPrice());
         book.setStockquantity(bookForm.getStockQuantity());
-        book.setAuthor(bookForm.getAutor());
+        book.setAuthor(bookForm.getAuthor());
         book.setIsbn(bookForm.getIsbn());
 
         // 상품 등록

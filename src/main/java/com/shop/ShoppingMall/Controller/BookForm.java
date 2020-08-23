@@ -13,6 +13,6 @@ public class BookForm {
     private int stockQuantity;
     
     //책 속성
-    private String autor;
+    private String author;
     private String isbn;
 }
