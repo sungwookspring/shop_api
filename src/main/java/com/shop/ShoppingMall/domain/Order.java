@@ -45,7 +45,7 @@ public class Order {
         order.setMember(member1)
      */
 
-    // member - order 연관관계
+    // member - order 연관관계 메소드
     public void setMember(Member member){
         this.member = member;
         //양방향 설정
@@ -62,4 +62,57 @@ public class Order {
         this.delivery = delivery;
         delivery.setOrder(this);
     }
+
+    /***
+     * 주문 생성자 메소드(모든 연관관계 설정 후 order객체 리턴)
+     */
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems){
+        //주문 객체 초기화
+        Order order = new Order();
+        order.setMember(member);
+        order.setDelivery(delivery);
+
+        for(OrderItem orderItem: orderItems){
+            order.addOrderItem(orderItem);
+        }
+
+        //배송상태 설정
+        order.setStatus(OrderStatus.ORDER);
+        order.setOrderDate(LocalDateTime.now());
+
+        return order;
+    }
+
+    /***
+     * 비지니스 로직
+     */
+
+    /***
+     * 주문취소
+     */
+    public void cancel(){
+        // 이미 배송 중이면 주문취소 불가
+        if(delivery.getStatus() == DeliveryStatus.COMPLETED){
+            throw new IllegalStateException("이미 배송 완료된 주문은 취소가 불가능합니다");
+        }
+
+        this.setStatus(OrderStatus.CANCLE);
+        for(OrderItem orderItem : orderitems){
+            orderItem.cancel();
+        }
+    }
+
+    /***
+     * 아이템 전체 주문 가격
+     * @return
+     */
+    public int getTotalPrice(){
+        int totalPrice = 0;
+        for(OrderItem orderItem: orderitems){
+            totalPrice += orderItem.getTotalPrice();
+        }
+
+        return totalPrice;
+    }
+    
 }
