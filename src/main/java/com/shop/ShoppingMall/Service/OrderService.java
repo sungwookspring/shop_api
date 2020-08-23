@@ -8,12 +8,9 @@ import com.shop.ShoppingMall.domain.Member;
 import com.shop.ShoppingMall.domain.Order;
 import com.shop.ShoppingMall.domain.OrderItem;
 import com.shop.ShoppingMall.domain.item.Item;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
@@ -63,10 +60,5 @@ public class OrderService {
     public void cancelOrder(long orderId){
         Order findOrder = orderRepository.findOrderById(orderId);
         findOrder.cancel();
-    }
-
-    //검색
-    public List<Order> findOrders(){
-        
     }
 }
