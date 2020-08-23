@@ -53,4 +53,11 @@ public class MemberController {
 
         return "redirect:/";
     }
+
+    @GetMapping("/admin/memberlist")
+    public String ListMember(Model model){
+        log.info("[*] 회원목록 출력 페이지 로드");
+
+        return "admin/memberlist";
+    }
 }
