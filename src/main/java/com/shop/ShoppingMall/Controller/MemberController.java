@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -46,7 +47,7 @@ public class MemberController {
         Member member = new Member();
         
         member.setName(memberform.getName());
-        member.setAddrss(address);
+        member.setAddress(address);
         // 회원가입
         memberService.CreateMember(member);
         log.info("회원가입 성공");
@@ -57,6 +58,8 @@ public class MemberController {
     @GetMapping("/admin/memberlist")
     public String ListMember(Model model){
         log.info("[*] 회원목록 출력 페이지 로드");
+        List<Member> members = memberService.findALL();
+        model.addAttribute("members", members);
 
         return "admin/memberlist";
     }
