@@ -75,11 +75,20 @@ public class OrderServiceTest {
 
     @Test
     public void 주문취소(){
+        //given
+        Member member1 = CreateMember();
+        Book book = CreateBook(10000, 10);
 
-    }
+        int orderCount = 7;
+        Long orderId = orderService.order(member1.getId(), book.getId(), orderCount);
 
-    @Test
-    public void 샘플주문_재고수량초과() throws Exception{
+        //when
+        orderService.cancelOrder(orderId);
+
+        //then
+        Order FindOrder = orderRepository.findOrderById(orderId);
+        assertEquals("주문 상태는 cancel", OrderStatus.CANCLE, FindOrder.getStatus());
+        assertEquals("주문이 취소되었으므로 상품 갯수는 10개", 10, book.getStockquantity());
 
     }
 
