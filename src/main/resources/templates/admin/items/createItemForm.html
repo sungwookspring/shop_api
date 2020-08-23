@@ -9,26 +9,26 @@
 <body>
     <p style="text-align: center">상품등록 페이지</p>
 
-    <form class="registeritem-form" th:action="@{/admin/items/new}" method="post" th:object="${form}">
+    <form class="registeritem-form" th:action="@{/admin/items/new}" method="post" th:object="${itemForm}">
         <div class="registeritem-area">
             <label>상품명</label>
-            <input type="text" th:fields="*{name}">
+            <input type="text" th:field="*{name}">
         </div>
         <div class="registeritem-area">
             <label>가격</label>
-            <input type="number" th:fields="*{price}">
+            <input type="number" th:field="*{price}">
         </div>
         <div class="registeritem-area">
             <label>수량</label>
-            <input type="number" th:fields="*{stockQuantity}">
+            <input type="number" th:field="*{stockQuantity}">
         </div>
         <div class="registeritem-area">
             <label>저자</label>
-            <input type="text" th:fields="*{author}">
+            <input type="text" th:field="*{author}">
         </div>
         <div class="registeritem-area">
             <label>isbn</label>
-            <input type="text" th:fields="*{isbn}">
+            <input type="text" th:field="*{isbn}">
         </div>
 
         <button style="margin-top: 10px" type="submit" class="additem-btn">상품등록</button>

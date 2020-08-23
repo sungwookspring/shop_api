@@ -4,10 +4,12 @@ import com.shop.ShoppingMall.Repository.ItemRepository;
 import com.shop.ShoppingMall.domain.item.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional(readOnly = true)
 public class ItemService {
     private final ItemRepository itemRepository;
 
@@ -20,6 +22,7 @@ public class ItemService {
      * 아이템 등록
      * @param item 아이탬 객체
      */
+    @Transactional
     public void save(Item item){
         itemRepository.save(item);
     }

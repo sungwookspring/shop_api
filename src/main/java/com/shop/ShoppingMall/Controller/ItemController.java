@@ -2,6 +2,7 @@ package com.shop.ShoppingMall.Controller;
 
 import com.shop.ShoppingMall.Service.ItemService;
 import com.shop.ShoppingMall.domain.item.Book;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@Slf4j
 public class ItemController {
     private final ItemService itemService;
 
@@ -24,7 +26,7 @@ public class ItemController {
      */
     @GetMapping("/admin/items/new")
     public String createForm(Model model){
-        model.addAttribute("form", new BookForm());
+        model.addAttribute("itemForm", new BookForm());
         return "admin/items/createItemForm";
     }
 
@@ -33,6 +35,7 @@ public class ItemController {
      */
     @PostMapping("/admin/items/new")
     public String create(BookForm bookForm){
+        log.info("[*] 상품등록 시작");
         Book book = new Book();
         book.setName(bookForm.getName());
         book.setPrice(bookForm.getPrice());
@@ -40,8 +43,11 @@ public class ItemController {
         book.setAuthor(bookForm.getAuthor());
         book.setIsbn(bookForm.getIsbn());
 
+        log.info(Long.toString(book.getId()));
+
         // 상품 등록
         itemService.save(book);
+        log.info("[*] 상품등록 완료");
 
         return "redirect:/admin";
     }
