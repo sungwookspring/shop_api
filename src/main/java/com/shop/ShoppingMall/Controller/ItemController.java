@@ -120,6 +120,17 @@ public class ItemController {
     public String UpdateItem(@ModelAttribute("form")BookForm bookForm){
         log.info("[*] 상품수정");
 
-        return "redirect:/items/list"
+        Book book = new Book();
+        book.setId(bookForm.getId());
+        book.setName(bookForm.getName());
+        book.setPrice(bookForm.getPrice());
+        book.setStockquantity(bookForm.getStockQuantity());
+        book.setAuthor(bookForm.getAuthor());
+        book.setIsbn(bookForm.getIsbn());
+
+        //상품 업데이트: 병합방법 구현
+        itemService.save(book);
+
+        return "redirect:/items/list";
     }
 }
