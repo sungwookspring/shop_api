@@ -35,5 +35,4 @@ public class OrderController {
 
         return "Order/order";
     }
-
 }

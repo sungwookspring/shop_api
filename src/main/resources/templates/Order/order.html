@@ -6,6 +6,35 @@
 <body>
 <div th:replace="fragments/header :: header" />
 
-Hello world
+    <form class="order-form">
+        <div class="orderform-area">
+            <!-- To-do 사용자 인증 -->
+            <h3>주문회원</h3>
+            <select name="memberid" id="member">
+                <option value="">회원선택</option>
+                <option th:each="member : ${members}"
+                        th:value="${member.id}"
+                        th:text="${member.name}"
+                />
+            </select>
+        </div>
+        <div class="orderform-area">
+            <!-- To-do 사용자 인증 -->
+            <h3>상품명</h3>
+            <select name="itemId" id="item">
+                <option value="">상품선택</option>
+                <option th:each="item : ${items}"
+                        th:value="${item.id}"
+                        th:text="${item.name}"
+                />
+            </select>
+        </div>
+        <div class="orderform-area">
+            <h3>주문수량</h3>
+            <input type="number" name="count" id="count">
+        </div>
+
+        <button type="submit">상품주문</button>
+    </form>
 </body>
 </html>
