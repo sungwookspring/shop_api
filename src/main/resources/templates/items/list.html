@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/import :: importer">
+    <title>main page</title>
+
+</head>
+<body>
+<div th:replace="fragments/header :: header" />
+
+    <table>
+        <thead>
+        <th>#</th>
+        <th>상품명</th>
+        <th>가격</th>
+        <th>재고수량</th>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.id}"></td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${item.stockquantity}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

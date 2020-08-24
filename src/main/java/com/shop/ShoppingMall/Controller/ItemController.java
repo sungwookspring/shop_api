@@ -2,12 +2,15 @@ package com.shop.ShoppingMall.Controller;
 
 import com.shop.ShoppingMall.Service.ItemService;
 import com.shop.ShoppingMall.domain.item.Book;
+import com.shop.ShoppingMall.domain.item.Item;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 @Slf4j
@@ -50,5 +53,32 @@ public class ItemController {
         log.info("[*] 상품등록 완료");
 
         return "redirect:/admin";
+    }
+
+    /***
+     * 관리자 입장 상품 리스트 조회
+     * @param model
+     * @return
+     */
+    @GetMapping("/admin/items/list")
+
+    public String admin_list(Model model){
+        log.info("[*] 관리자가 상품 조회");
+        List<Item> items = itemService.findALL();
+        model.addAttribute("items", items);
+        return "admin/items/list";
+    }
+
+    /***
+     * 회원입장에서 상품 리스트 조회
+     * @param model
+     * @return
+     */
+    @GetMapping("/items/list")
+    public String list(Model model){
+        log.info("[*] 고객이 상품 조회");
+        List<Item> items = itemService.findALL();
+        model.addAttribute("items", items);
+        return "items/list";
     }
 }
