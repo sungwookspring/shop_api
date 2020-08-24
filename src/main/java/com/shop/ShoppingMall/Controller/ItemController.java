@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -80,5 +82,44 @@ public class ItemController {
         List<Item> items = itemService.findALL();
         model.addAttribute("items", items);
         return "items/list";
+    }
+
+    /***
+     * 상품 수정 요청
+     * 상품 데이터를 상품 수정 페이지에 그대로 매핑
+     * @param itemId
+     * @param model
+     * @return
+     */
+    @GetMapping("items/{itemId}/update")
+    public String UpdateItemForm(@PathVariable("ItemId")Long itemId, Model model){
+        log.info("[*] 상품 수정 요청");
+        //간단한 예제이므로 Book상품으로 캐스팅
+        Book book = (Book) itemService.findItemById(itemId);
+
+        //상품정보 매핑
+        BookForm form = new BookForm();
+        form.setId(book.getId());
+        form.setName(book.getName());
+        form.setPrice(book.getPrice());
+        form.setStockQuantity(book.getPrice());
+        form.setAuthor(book.getAuthor());
+        form.setIsbn(book.getIsbn());
+
+        model.addAttribute("form", form);
+
+        return "items/update";
+    }
+
+    /***
+     * 상품 수정
+     * @param bookForm
+     * @return 아이템 목록 페이지 이동
+     */
+    @GetMapping("items/{itemId}/update")
+    public String UpdateItem(@ModelAttribute("form")BookForm bookForm){
+        log.info("[*] 상품수정");
+
+        return "redirect:/items/list"
     }
 }
