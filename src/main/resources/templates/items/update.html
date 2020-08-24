@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>상품수정 페이지</title>
 </head>
 <body>
-Hello world
+<form class="itemupdate-form" th:object="${form}" method="post">
+    <!-- To-Do 보안        -->
+    <input type="hidden" th:field="*{id}" />
+
+    <div class="itemupdate-formarea">
+        <h3 th:for="name">상품명</h3>
+        <input type="text" th:field="*{name}">
+    </div>
+    <div class="itemupdate-formarea">
+        <h3 th:for="price">가격</h3>
+        <input type="text" th:field="*{price}">
+    </div>
+    <div class="itemupdate-formarea">
+        <h3 th:for="stockQuantity">수량</h3>
+        <input type="text" th:field="*{stockQuantity}">
+    </div>
+    <div class="itemupdate-formarea">
+        <h3 th:for="author">저자</h3>
+        <input type="text" th:field="*{author}">
+    </div>
+    <div class="itemupdate-formarea">
+        <h3 th:for="isbn">ISBN</h3>
+        <input type="text" th:field="*{isbn}">
+    </div>
+
+    <button type="submit">상품수정</button>
+</form>
+
 </body>
 </html>

@@ -141,3 +141,11 @@ h1, h3{
     collapse: #fff;
     font-size: 16px;
 }
+/*상품수정*/
+.itemupdate-form{
+    display: flex;
+    flex-direction: column;
+}
+.itemupdate-formarea{
+    margin-top: 18px;
+}

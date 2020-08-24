@@ -92,7 +92,7 @@ public class ItemController {
      * @return
      */
     @GetMapping("items/{itemId}/update")
-    public String UpdateItemForm(@PathVariable("ItemId")Long itemId, Model model){
+    public String UpdateItemForm(@PathVariable("itemId")Long itemId, Model model){
         log.info("[*] 상품 수정 요청");
         //간단한 예제이므로 Book상품으로 캐스팅
         Book book = (Book) itemService.findItemById(itemId);
