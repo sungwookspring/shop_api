@@ -5,11 +5,13 @@ import com.shop.ShoppingMall.Service.ItemService;
 import com.shop.ShoppingMall.Service.MemberService;
 import com.shop.ShoppingMall.Service.OrderService;
 import com.shop.ShoppingMall.domain.Member;
+import com.shop.ShoppingMall.domain.Order;
 import com.shop.ShoppingMall.domain.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -52,5 +54,13 @@ public class OrderController {
 
         orderService.order(memberId, itemId, count);
         return "redirect:/";
+    }
+
+    @GetMapping("/order/list")
+    public String orderList(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model){
+        List<Order> orders = orderService.findOrders(orderSearch);
+        model.addAttribute("orders", orders);
+
+        return "order/orderList";
     }
 }
