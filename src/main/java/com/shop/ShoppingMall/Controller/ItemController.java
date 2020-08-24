@@ -51,4 +51,27 @@ public class ItemController {
 
         return "redirect:/admin";
     }
+
+    /***
+     * 관리자 입장 상품 리스트 조회
+     * @param model
+     * @return
+     */
+    @GetMapping("/admin/items/list")
+    public String admin_list(Model model){
+        log.info("[*] 관리자가 상품 조회");
+        return "admin/items/list";
+    }
+
+    /***
+     * 회원입장에서 상품 리스트 조회
+     * @param model
+     * @return
+     */
+    @GetMapping("/items/list")
+    public String list(Model model){
+        log.info("[*] 고객이 상품 조회");
+        return "items/list";
+    }
+
 }
