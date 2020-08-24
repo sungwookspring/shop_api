@@ -116,7 +116,7 @@ public class ItemController {
      * @param bookForm
      * @return 아이템 목록 페이지 이동
      */
-    @GetMapping("items/{itemId}/update")
+    @PostMapping("items/{itemId}/update")
     public String UpdateItem(@ModelAttribute("form")BookForm bookForm){
         log.info("[*] 상품수정");
 
