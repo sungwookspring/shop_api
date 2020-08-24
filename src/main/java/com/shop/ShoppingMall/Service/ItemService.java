@@ -2,6 +2,7 @@ package com.shop.ShoppingMall.Service;
 
 import com.shop.ShoppingMall.Repository.ItemRepository;
 import com.shop.ShoppingMall.domain.item.Item;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,14 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class ItemService {
     private final ItemRepository itemRepository;
-
-    @Autowired
-    public ItemService(ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-    }
 
     /***
      * 아이템 등록

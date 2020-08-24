@@ -145,7 +145,17 @@ h1, h3{
 .itemupdate-form{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .itemupdate-formarea{
+    margin-top: 18px;
+}
+/*상품주문*/
+.order-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.orderform-area{
     margin-top: 18px;
 }
