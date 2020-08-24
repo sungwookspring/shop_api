@@ -33,7 +33,7 @@ public class OrderController {
         model.addAttribute("members",members);
         model.addAttribute("items",items);
 
-        return "";
+        return "Order/order";
     }
 
 }
