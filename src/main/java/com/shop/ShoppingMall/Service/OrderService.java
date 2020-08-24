@@ -8,23 +8,18 @@ import com.shop.ShoppingMall.domain.Member;
 import com.shop.ShoppingMall.domain.Order;
 import com.shop.ShoppingMall.domain.OrderItem;
 import com.shop.ShoppingMall.domain.item.Item;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class OrderService {
     private final OrderRepository orderRepository;
     private final MemberRepository memberRepository;
     private final ItemRepository itemRepository;
-
-    @Autowired
-    public OrderService(OrderRepository orderRepository, MemberRepository memberRepository, ItemRepository itemRepository) {
-        this.orderRepository = orderRepository;
-        this.memberRepository = memberRepository;
-        this.itemRepository = itemRepository;
-    }
 
     /***
      * 주문생성
