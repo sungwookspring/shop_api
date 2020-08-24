@@ -3,6 +3,7 @@ package com.shop.ShoppingMall.Service;
 import com.shop.ShoppingMall.Repository.ItemRepository;
 import com.shop.ShoppingMall.Repository.MemberRepository;
 import com.shop.ShoppingMall.Repository.OrderRepository;
+import com.shop.ShoppingMall.Repository.OrderSearch;
 import com.shop.ShoppingMall.domain.Delivery;
 import com.shop.ShoppingMall.domain.Member;
 import com.shop.ShoppingMall.domain.Order;
@@ -12,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -55,5 +58,14 @@ public class OrderService {
     public void cancelOrder(long orderId){
         Order findOrder = orderRepository.findOrderById(orderId);
         findOrder.cancel();
+    }
+
+    /***
+     * 이름으로 모든 주문 검색
+     * @param orderSearch
+     * @return
+     */
+    public List<Order> findOrders(OrderSearch orderSearch){
+        return orderRepository.findAllByString(orderSearch);
     }
 }
