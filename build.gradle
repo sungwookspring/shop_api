@@ -35,3 +35,7 @@ test {
 		includeEngines 'junit-vintage'
 	}
 }
+
+springBoot {
+    mainClassName = 'com.shop.ShoppingMall'
+}
