@@ -159,3 +159,25 @@ h1, h3{
 .orderform-area{
     margin-top: 18px;
 }
+/*주문조회*/
+.orderList{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 18px;
+}
+.search-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.search-input{
+    margin-right: 18px;
+}
+.orderList-table{
+    margin-top: 18px;
+}
+.orderList-cancel{
+    width:100%;
+    background-color: #166cea;
+}
