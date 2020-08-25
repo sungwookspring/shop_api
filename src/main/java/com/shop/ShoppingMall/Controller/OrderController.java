@@ -10,10 +10,7 @@ import com.shop.ShoppingMall.domain.item.Item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -56,11 +53,29 @@ public class OrderController {
         return "redirect:/";
     }
 
+    /***
+     * 주문목록 전체 조회
+     * @param orderSearch
+     * @param model
+     * @return
+     */
     @GetMapping("/order/list")
     public String orderList(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model){
         List<Order> orders = orderService.findOrders(orderSearch);
         model.addAttribute("orders", orders);
 
         return "order/orderList";
+    }
+
+    /***
+     * 주문 취소
+     * @param orderId
+     * @return
+     */
+    @PostMapping("/order/cancel/{orderId}")
+    public String cancelOrder(@PathVariable("orderId") Long orderId){
+        orderService.cancelOrder(orderId);
+        
+        return "redirect:/order";
     }
 }
