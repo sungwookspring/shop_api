@@ -6,7 +6,7 @@
 <body>
 <div th:replace="fragments/header :: header" />
 
-    <form class="order-form" action="/order" method="POST">
+    <form class="order-form" th:action="@{/order}" method="POST">
         <div class="orderform-area">
             <!-- To-do 사용자 인증 -->
             <h3>주문회원</h3>
