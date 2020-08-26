@@ -27,6 +27,6 @@ public class HomeController {
     @GetMapping("/admin")
     public String adminHome(){
         log.info("[*] admin home controller");
-        return "/admin/index.html";
+        return "admin/index.html";
     }
 }
