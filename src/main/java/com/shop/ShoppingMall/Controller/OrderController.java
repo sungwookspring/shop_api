@@ -64,7 +64,7 @@ public class OrderController {
         List<Order> orders = orderService.findOrders(orderSearch);
         model.addAttribute("orders", orders);
 
-        return "order/orderList";
+        return "Order/orderList";
     }
 
     /***
