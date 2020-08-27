@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  mariadb:
+    image: mariadb:10.5.5
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=shop
+      - MYSQL_USER=abc
+      - MYSQL_PASSWORD=password
+  webapp:
+    image: choisunguk/first_springproject_shoppingmall:2.2
+    ports:
+      - 8080:8080
+    depends_on:
+      - mariadb
