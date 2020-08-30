@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springbootapp
+  labels:
+    app: springbootapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springbootapp
+  template:
+    metadata:
+      labels:
+        app: springbootapp
+    spec:
+      containers:
+        - image: choisunguk/first_springproject_shoppingmall:2.4
+          name: springbootapp
+          env:
+          - name: SPRING_DATASOURCE_URL
+            value: jdbc:mariadb://mariadb:3306/shop
+          - name: SPRING_DATASOURCE_USERNAME
+            value: abc
+          - name: SPRING_DATASOURCE_PASSWORD
+            value: password
+          - name: SPRING_DATABSE_NAME
+            value: shop
+          ports:
+          - containerPort: 8080
+            name: springbootapp

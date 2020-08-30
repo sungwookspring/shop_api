@@ -18,22 +18,20 @@ spec:
         - image: mariadb:10.5.5
           name: mariadb
           env:
-            - name: MYSQL_ROOT_PASSWORD
-              value: password
-            - name: MYSQL_DATABASE # 구성할 database명
-              value: wordpress
-            - name: MYSQL_USER # database에 권한이 있는 user
-              value: abc
-            - name: MYSQL_PASSWORD # database에 권한이 있는 user의 패스워드
-              value: password
-            - name: MYSQL_ROOT_HOST # 접근 호스트
-              value: '%'
+          - name: MYSQL_ROOT_PASSWORD
+            value: password
+          - name: MYSQL_DATABASE # 구성할 database명
+            value: shop
+          - name: MYSQL_USER # database에 권한이 있는 user
+            value: abc
+          - name: MYSQL_PASSWORD # database에 권한이 있는 user의 패스워드
+            value: password
           ports:
-            - containerPort: 3306
-              name: mariadb
+          - containerPort: 3306
+            name: mariadb
           volumeMounts:
-            - name: spring-mariadb
-              mountPath: /var/lib/mysql
+          - name: spring-mariadb
+            mountPath: /var/lib/mysql
       volumes:
         - name: spring-mariadb
           persistentVolumeClaim:
