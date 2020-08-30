@@ -10,7 +10,7 @@ services:
       - MYSQL_USER=abc
       - MYSQL_PASSWORD=password
   webapp:
-    image: choisunguk/first_springproject_shoppingmall:2.3
+    image: choisunguk/first_springproject_shoppingmall:2.4
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mariadb://mariadb:3306/shop
       - SPRING_DATASOURCE_USERNAME=abc
