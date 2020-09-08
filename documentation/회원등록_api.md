@@ -56,3 +56,24 @@ public CreateMemberResponse save(@RequestBody @Valid Member member){
 
 * 결과: 400 Bad Request와 오류내용
 ![](../imgs/회원등록2_요청검증.png)
+
+# version2: API요청을 받는 Dto 생성
+* 소스코드
+```java
+; Controller
+
+@PostMapping("/api/v2/members")
+public CreateMemberResponse saveV2(@RequestBody @Valid CreateMemberRequest request){
+    Member member = new Member();
+    member.setName(request.getName());
+
+    Long saveId = memberService.CreateMember(member);
+    return new CreateMemberResponse(saveId);
+}
+
+@Data
+static class CreateMemberRequest {
+    @NotEmpty
+    private String name;
+}
+```
