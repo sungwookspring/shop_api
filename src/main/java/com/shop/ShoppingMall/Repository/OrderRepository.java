@@ -1,5 +1,7 @@
 package com.shop.ShoppingMall.Repository;
 
+import com.shop.ShoppingMall.api.dto.SimpleOrderDto;
+import com.shop.ShoppingMall.api.dto.SimpleOrderQueryDto;
 import com.shop.ShoppingMall.domain.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -97,5 +99,13 @@ public class OrderRepository {
                             " join fetch o.member m" +
                             " join fetch o.delivery d", Order.class
             ).getResultList();
+    }
+
+    public List<SimpleOrderQueryDto> findOrderDtos() {
+        return em.createQuery(
+                    "select new com.shop.ShoppingMall.api.dto.SimpleOrderQueryDto(o.id, m.name, o.orderDate, o.status, d.address)" +
+                            " from Order o" +
+                            " join o.member m" +
+                            " join o.delivery d", SimpleOrderQueryDto.class).getResultList();
     }
 }
