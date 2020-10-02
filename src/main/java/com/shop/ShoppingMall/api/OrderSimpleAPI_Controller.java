@@ -2,6 +2,7 @@ package com.shop.ShoppingMall.api;
 
 import com.shop.ShoppingMall.Repository.OrderRepository;
 import com.shop.ShoppingMall.Repository.OrderSearch;
+import com.shop.ShoppingMall.api.dto.OrderDtoWithItem;
 import com.shop.ShoppingMall.api.dto.SimpleOrderDto;
 import com.shop.ShoppingMall.api.dto.SimpleOrderQueryDto;
 import com.shop.ShoppingMall.domain.Order;
@@ -47,14 +48,11 @@ public class OrderSimpleAPI_Controller {
     }
 
     @GetMapping("/api/v3.1/orders")
-    public List<SimpleOrderDto> ordersv3_1(
-            @RequestParam(value = "offset", defaultValue = "0") int offset,
-            @RequestParam(value = "limit", defaultValue = "100") int limit
-            ){
-        List<Order> orders = orderRepository.findAllWithMemberDelivery(offset, limit);
+    public List<OrderDtoWithItem> ordersv3_1(){
+        List<Order> orders = orderRepository.findAllWithMemberDelivery();
 
-        List<SimpleOrderDto> orderDtos = orders.stream()
-                .map(order -> new SimpleOrderDto(order))
+        List<OrderDtoWithItem> orderDtos = orders.stream()
+                .map(order -> new OrderDtoWithItem(order))
                 .collect(Collectors.toList());
 
         return orderDtos;
