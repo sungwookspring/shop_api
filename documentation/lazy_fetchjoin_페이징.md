@@ -3,7 +3,7 @@
 
 <br>
 
-# 2. 결론
+# 2. 설정
 * hibernate설정에서 default_batch_fetch_size필드 추가 
 ```yaml
 spring:
@@ -160,7 +160,7 @@ where
     )
 ```
 
-* orderitem -> item 강제초기화
+* 세번째 쿼리: orderitem -> item 강제초기화
 ```
 select
     item0_.item_id as item_id2_3_0_,
