@@ -160,7 +160,7 @@ where
     )
 ```
 
-* 세번째 쿼리: orderitem -> item 강제초기화
+* 세번째 쿼리: orderitem -> item 프록시 강제 초기화
 ```
 select
     item0_.item_id as item_id2_3_0_,
