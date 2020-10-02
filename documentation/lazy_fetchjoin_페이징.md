@@ -27,6 +27,8 @@ spring:
 * 자동으로 in 쿼리 실행
     * in 쿼리는 특정 조건을 필터할 때 사용
     
+<br>
+    
 # 3. 소스코드
 ## 3.1 Controller
 ```java
@@ -44,7 +46,7 @@ public List<OrderDtoWithItem> ordersv3_1(){
 
 <br>
 
-# 3.2 Repository
+## 3.2 Repository
 * LAZY가 아닌 것은 fetch join, <strong>LAZY인 것은 프록시 강제 초기화</strong> 
 ```java
 public List<Order> findAllWithMemberDelivery() {
