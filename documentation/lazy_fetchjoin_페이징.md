@@ -1,6 +1,7 @@
 # 1. 목표
 * oneToMany Lazy관계에서 페이징
-    * *Toone LAZY관계는 페이징이 가능하지만 <strong>*ToMany LAZY관계</strong>는 메모리에서 페이징을 하므로 오류 발생 가능성 높음 
+    * *Toone LAZY관계는 페이징이 가능하지만
+    * <strong>*ToMany LAZY관계</strong>는 데이터베이스단이 아닌 서버 메모리에서 페이징을 하므로 오류 발생 가능성 높음 
 
 <br>
 
