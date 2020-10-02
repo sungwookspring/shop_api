@@ -1,5 +1,6 @@
 # 1. 목표
-* Lazy관계에서 페이징
+* oneToMany Lazy관계에서 페이징
+    * *Toone LAZY관계는 페이징이 가능하지만 <strong>*ToMany LAZY관계</strong>는 메모리에서 페이징을 하므로 오류 발생 가능성 높음 
 
 <br>
 
@@ -114,7 +115,7 @@ public class OrderItemsDto {
 
 <br>
 
-* 첫번째 쿼리
+* 첫번째 쿼리: LAZY관계(oneToMany)가 아닌 LAZY관계는 fetch join 수행
 ```
 select
     order0_.order_id as order_id1_6_0_,
