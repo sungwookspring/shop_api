@@ -13,6 +13,7 @@
 | 번호 | 요약 | 링크 |
 |-----|------------|-----|
 | 1 | 페이징 |  [링크](./documentation/주문조회페이징.md) |
+| 2 | LAZY관계 페이징 |  [링크](./documentation/lazy_fetchjoin_페이징.md) |
 
 
 <br>
