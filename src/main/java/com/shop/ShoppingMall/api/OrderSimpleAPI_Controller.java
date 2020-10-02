@@ -7,6 +7,7 @@ import com.shop.ShoppingMall.api.dto.SimpleOrderQueryDto;
 import com.shop.ShoppingMall.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -45,4 +46,17 @@ public class OrderSimpleAPI_Controller {
         return result;
     }
 
+    @GetMapping("/api/v3.1/orders")
+    public List<SimpleOrderDto> ordersv3_1(
+            @RequestParam(value = "offset", defaultValue = "0") int offset,
+            @RequestParam(value = "limit", defaultValue = "100") int limit
+            ){
+        List<Order> orders = orderRepository.findAllWithMemberDelivery(offset, limit);
+
+        List<SimpleOrderDto> orderDtos = orders.stream()
+                .map(order -> new SimpleOrderDto(order))
+                .collect(Collectors.toList());
+
+        return orderDtos;
+    }
 }
